@@ -1,0 +1,402 @@
+[
+  {
+    "id": "1",
+    "name": "Smartphone Samsung Galaxy",
+    "description": "Smartphone di ultima generazione con fotocamera avanzata e display AMOLED",
+    "price": 599.99,
+    "stock": 15,
+    "category": "Elettronica",
+    "sku": "ELE-SMA-001",
+    "image": "https://via.placeholder.com/300x200?text=Samsung+Galaxy",
+    "tags": [
+      "smartphone",
+      "samsung",
+      "android",
+      "fotocamera"
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Laptop Dell XPS 13",
+    "description": "Laptop ultrabook con processore Intel i7 e SSD da 512GB",
+    "price": 1299.99,
+    "stock": 8,
+    "category": "Elettronica",
+    "sku": "ELE-LAP-002",
+    "image": "https://via.placeholder.com/300x200?text=Dell+XPS+13",
+    "tags": [
+      "laptop",
+      "dell",
+      "ultrabook",
+      "i7"
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Cuffie Wireless Sony",
+    "description": "Cuffie bluetooth con cancellazione del rumore attiva",
+    "price": 249.99,
+    "stock": 25,
+    "category": "Elettronica",
+    "sku": "ELE-CUF-003",
+    "image": "https://via.placeholder.com/300x200?text=Sony+Headphones",
+    "tags": [
+      "cuffie",
+      "wireless",
+      "sony",
+      "bluetooth"
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Maglietta Polo Uomo",
+    "description": "Polo in cotone 100% disponibile in vari colori",
+    "price": 39.99,
+    "stock": 50,
+    "category": "Abbigliamento",
+    "sku": "ABB-POL-004",
+    "image": "https://via.placeholder.com/300x200?text=Polo+Shirt",
+    "tags": [
+      "polo",
+      "uomo",
+      "cotone",
+      "casual"
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Jeans Donna Skinny",
+    "description": "Jeans skinny fit in denim elasticizzato",
+    "price": 79.99,
+    "stock": 30,
+    "category": "Abbigliamento",
+    "sku": "ABB-JEA-005",
+    "image": "https://via.placeholder.com/300x200?text=Skinny+Jeans",
+    "tags": [
+      "jeans",
+      "donna",
+      "skinny",
+      "denim"
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Giacca Invernale",
+    "description": "Giacca imbottita resistente al vento e all'acqua",
+    "price": 159.99,
+    "stock": 20,
+    "category": "Abbigliamento",
+    "sku": "ABB-GIA-006",
+    "image": "https://via.placeholder.com/300x200?text=Winter+Jacket",
+    "tags": [
+      "giacca",
+      "inverno",
+      "impermeabile",
+      "imbottita"
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Sneakers Nike Air",
+    "description": "Scarpe sportive con tecnologia Air per il massimo comfort",
+    "price": 119.99,
+    "stock": 35,
+    "category": "Abbigliamento",
+    "sku": "ABB-SNE-007",
+    "image": "https://via.placeholder.com/300x200?text=Nike+Air",
+    "tags": [
+      "sneakers",
+      "nike",
+      "sport",
+      "comfort"
+    ]
+  },
+  {
+    "id": "8",
+    "name": "Divano 3 Posti",
+    "description": "Divano moderno in tessuto grigio con cuscini removibili",
+    "price": 899.99,
+    "stock": 5,
+    "category": "Casa e Giardino",
+    "sku": "CAS-DIV-008",
+    "image": "https://via.placeholder.com/300x200?text=3+Seat+Sofa",
+    "tags": [
+      "divano",
+      "salotto",
+      "tessuto",
+      "moderno"
+    ]
+  },
+  {
+    "id": "9",
+    "name": "Tavolo da Pranzo",
+    "description": "Tavolo in legno massello per 6 persone",
+    "price": 649.99,
+    "stock": 7,
+    "category": "Casa e Giardino",
+    "sku": "CAS-TAV-009",
+    "image": "https://via.placeholder.com/300x200?text=Dining+Table",
+    "tags": [
+      "tavolo",
+      "legno",
+      "pranzo",
+      "6 posti"
+    ]
+  },
+  {
+    "id": "10",
+    "name": "Set Pentole Antiaderenti",
+    "description": "Set di 5 pentole con rivestimento antiaderente",
+    "price": 129.99,
+    "stock": 18,
+    "category": "Casa e Giardino",
+    "sku": "CAS-PEN-010",
+    "image": "https://via.placeholder.com/300x200?text=Cookware+Set",
+    "tags": [
+      "pentole",
+      "cucina",
+      "antiaderente",
+      "set"
+    ]
+  },
+  {
+    "id": "11",
+    "name": "Aspirapolvere Robot",
+    "description": "Robot aspirapolvere intelligente con mappatura laser",
+    "price": 399.99,
+    "stock": 12,
+    "category": "Casa e Giardino",
+    "sku": "CAS-ASP-011",
+    "image": "https://via.placeholder.com/300x200?text=Robot+Vacuum",
+    "tags": [
+      "aspirapolvere",
+      "robot",
+      "smart",
+      "pulizia"
+    ]
+  },
+  {
+    "id": "12",
+    "name": "Bicicletta Mountain Bike",
+    "description": "MTB con telaio in alluminio e 21 velocità",
+    "price": 459.99,
+    "stock": 10,
+    "category": "Sport e Tempo Libero",
+    "sku": "SPO-BIC-012",
+    "image": "https://via.placeholder.com/300x200?text=Mountain+Bike",
+    "tags": [
+      "bicicletta",
+      "mtb",
+      "sport",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "13",
+    "name": "Tapis Roulant Elettrico",
+    "description": "Tapis roulant pieghevole con display LCD",
+    "price": 799.99,
+    "stock": 6,
+    "category": "Sport e Tempo Libero",
+    "sku": "SPO-TAP-013",
+    "image": "https://via.placeholder.com/300x200?text=Treadmill",
+    "tags": [
+      "tapis roulant",
+      "fitness",
+      "casa",
+      "cardio"
+    ]
+  },
+  {
+    "id": "14",
+    "name": "Set Pesi Regolabili",
+    "description": "Set di manubri regolabili da 5 a 25 kg",
+    "price": 199.99,
+    "stock": 15,
+    "category": "Sport e Tempo Libero",
+    "sku": "SPO-PES-014",
+    "image": "https://via.placeholder.com/300x200?text=Adjustable+Weights",
+    "tags": [
+      "pesi",
+      "manubri",
+      "fitness",
+      "palestra"
+    ]
+  },
+  {
+    "id": "15",
+    "name": "Tablet Apple iPad",
+    "description": "Tablet con display Retina da 10.9 pollici",
+    "price": 449.99,
+    "stock": 22,
+    "category": "Elettronica",
+    "sku": "ELE-TAB-015",
+    "image": "https://via.placeholder.com/300x200?text=iPad",
+    "tags": [
+      "tablet",
+      "apple",
+      "ipad",
+      "retina"
+    ]
+  },
+  {
+    "id": "16",
+    "name": "Smartwatch Fitness",
+    "description": "Orologio intelligente con monitoraggio salute",
+    "price": 179.99,
+    "stock": 28,
+    "category": "Elettronica",
+    "sku": "ELE-SMA-016",
+    "image": "https://via.placeholder.com/300x200?text=Smartwatch",
+    "tags": [
+      "smartwatch",
+      "fitness",
+      "salute",
+      "sport"
+    ]
+  },
+  {
+    "id": "17",
+    "name": "Vestito Elegante Donna",
+    "description": "Abito da sera in seta con dettagli ricamati",
+    "price": 189.99,
+    "stock": 12,
+    "category": "Abbigliamento",
+    "sku": "ABB-VES-017",
+    "image": "https://via.placeholder.com/300x200?text=Evening+Dress",
+    "tags": [
+      "vestito",
+      "elegante",
+      "sera",
+      "seta"
+    ]
+  },
+  {
+    "id": "18",
+    "name": "Camicia Uomo Business",
+    "description": "Camicia formale in cotone con colletto classico",
+    "price": 59.99,
+    "stock": 40,
+    "category": "Abbigliamento",
+    "sku": "ABB-CAM-018",
+    "image": "https://via.placeholder.com/300x200?text=Business+Shirt",
+    "tags": [
+      "camicia",
+      "business",
+      "formale",
+      "cotone"
+    ]
+  },
+  {
+    "id": "19",
+    "name": "Lampada da Tavolo LED",
+    "description": "Lampada moderna con dimmer e ricarica wireless",
+    "price": 89.99,
+    "stock": 25,
+    "category": "Casa e Giardino",
+    "sku": "CAS-LAM-019",
+    "image": "https://via.placeholder.com/300x200?text=LED+Lamp",
+    "tags": [
+      "lampada",
+      "led",
+      "dimmer",
+      "wireless"
+    ]
+  },
+  {
+    "id": "20",
+    "name": "Macchina del Caffè",
+    "description": "Macchina espresso automatica con macinacaffè integrato",
+    "price": 549.99,
+    "stock": 9,
+    "category": "Casa e Giardino",
+    "sku": "CAS-CAF-020",
+    "image": "https://via.placeholder.com/300x200?text=Coffee+Machine",
+    "tags": [
+      "caffè",
+      "espresso",
+      "automatica",
+      "macinacaffè"
+    ]
+  },
+  {
+    "id": "21",
+    "name": "Racchetta da Tennis",
+    "description": "Racchetta professionale in grafite con grip comfort",
+    "price": 149.99,
+    "stock": 16,
+    "category": "Sport e Tempo Libero",
+    "sku": "SPO-RAC-021",
+    "image": "https://via.placeholder.com/300x200?text=Tennis+Racket",
+    "tags": [
+      "tennis",
+      "racchetta",
+      "sport",
+      "grafite"
+    ]
+  },
+  {
+    "id": "22",
+    "name": "Zaino da Trekking",
+    "description": "Zaino impermeabile da 40L per escursioni",
+    "price": 99.99,
+    "stock": 20,
+    "category": "Sport e Tempo Libero",
+    "sku": "SPO-ZAI-022",
+    "image": "https://via.placeholder.com/300x200?text=Hiking+Backpack",
+    "tags": [
+      "zaino",
+      "trekking",
+      "impermeabile",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "23",
+    "name": "Monitor Gaming 27\"",
+    "description": "Monitor gaming 4K con refresh rate 144Hz",
+    "price": 399.99,
+    "stock": 11,
+    "category": "Elettronica",
+    "sku": "ELE-MON-023",
+    "image": "https://via.placeholder.com/300x200?text=Gaming+Monitor",
+    "tags": [
+      "monitor",
+      "gaming",
+      "4k",
+      "144hz"
+    ]
+  },
+  {
+    "id": "24",
+    "name": "Borsa da Lavoro",
+    "description": "Borsa professionale in pelle con scomparto laptop",
+    "price": 129.99,
+    "stock": 18,
+    "category": "Abbigliamento",
+    "sku": "ABB-BOR-024",
+    "image": "https://via.placeholder.com/300x200?text=Work+Bag",
+    "tags": [
+      "borsa",
+      "lavoro",
+      "pelle",
+      "laptop"
+    ]
+  },
+  {
+    "id": "25",
+    "name": "Set Giardinaggio",
+    "description": "Kit completo con attrezzi per il giardinaggio",
+    "price": 79.99,
+    "stock": 14,
+    "category": "Casa e Giardino",
+    "sku": "CAS-GIA-025",
+    "image": "https://via.placeholder.com/300x200?text=Garden+Tools",
+    "tags": [
+      "giardinaggio",
+      "attrezzi",
+      "giardino",
+      "set"
+    ]
+  }
+]

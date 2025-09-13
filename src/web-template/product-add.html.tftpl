@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${shop_name} - Add Product</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>${shop_name}</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="products-adv.html">Advanced Products</a></li>
+                <li><a href="product-add.html" class="active">Add Product</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h2>${add_product_title}</h2>
+                <p>${add_product_subtitle}</p>
+            </div>
+        </section>
+
+        <section class="add-product">
+            <div class="container">
+                <div class="form-container">
+                    <form id="product-form" onsubmit="submitProduct(event)">
+                        <div class="form-group">
+                            <label for="product-name">${product_name_label} *</label>
+                            <input type="text" id="product-name" name="name" required placeholder="${product_name_placeholder}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product-description">${product_description_label}</label>
+                            <textarea id="product-description" name="description" rows="4" placeholder="${product_description_placeholder}"></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="product-price">${product_price_label} *</label>
+                                <input type="number" id="product-price" name="price" step="0.01" min="0" required placeholder="0.00">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product-stock">${product_stock_label} *</label>
+                                <input type="number" id="product-stock" name="stock" min="0" required placeholder="0">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="product-category">${product_category_label} *</label>
+                                <select id="product-category" name="category" required>
+                                    <option value="">${select_category}</option>
+                                    <option value="${category_1}">${category_1}</option>
+                                    <option value="${category_2}">${category_2}</option>
+                                    <option value="${category_3}">${category_3}</option>
+                                    <option value="${category_4}">${category_4}</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="product-sku">${product_sku_label}</label>
+                                <input type="text" id="product-sku" name="sku" placeholder="${product_sku_placeholder}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product-image">${product_image_label}</label>
+                            <input type="url" id="product-image" name="image" placeholder="${product_image_placeholder}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product-tags">${product_tags_label}</label>
+                            <input type="text" id="product-tags" name="tags" placeholder="${product_tags_placeholder}">
+                            <small class="form-help">${tags_help_text}</small>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="resetForm()">${reset_form_text}</button>
+                            <button type="submit" class="btn btn-primary" id="submit-btn">${add_product_button}</button>
+                        </div>
+                    </form>
+
+                    <div class="success-message" id="success-message" style="display: none;">
+                        <p>${product_added_success}</p>
+                        <button onclick="addAnother()" class="btn btn-primary">${add_another_text}</button>
+                        <a href="products.html" class="btn btn-secondary">${view_products_text}</a>
+                    </div>
+
+                    <div class="error-message" id="error-message" style="display: none;">
+                        <p id="error-text">${error_adding_product}</p>
+                        <button onclick="hideError()" class="btn btn-primary">${try_again_text}</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; ${current_year} ${shop_name}. ${rights_reserved}</p>
+            <p class="kiro-credit">Generated by <a href="https://kiro.dev" target="_blank" rel="noopener">kiro.dev</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const LAMBDA_ADD_URL = '${lambda_add_url}';
+        
+        async function submitProduct(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const form = document.getElementById('product-form');
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = '${adding_product_text}';
+            hideMessages();
+            
+            try {
+                const formData = new FormData(form);
+                const productData = {
+                    name: formData.get('name'),
+                    description: formData.get('description'),
+                    price: parseFloat(formData.get('price')),
+                    stock: parseInt(formData.get('stock')),
+                    category: formData.get('category'),
+                    sku: formData.get('sku'),
+                    image: formData.get('image'),
+                    tags: formData.get('tags') ? formData.get('tags').split(',').map(tag => tag.trim()) : []
+                };
+                
+                const response = await fetch(LAMBDA_ADD_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify([productData])
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || '${network_error}');
+                }
+                
+                const result = await response.json();
+                
+                // Check if any products were created successfully
+                if (result.created > 0) {
+                    // Show success
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                } else {
+                    // Handle validation errors
+                    const errorMsg = result.errors && result.errors.length > 0 
+                        ? result.errors[0].errors.join(', ')
+                        : result.message || 'Failed to create product';
+                    throw new Error(errorMsg);
+                }
+                
+            } catch (error) {
+                console.error('Error adding product:', error);
+                document.getElementById('error-text').textContent = error.message;
+                errorMessage.style.display = 'block';
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.textContent = '${add_product_button}';
+            }
+        }
+        
+        function resetForm() {
+            document.getElementById('product-form').reset();
+            hideMessages();
+        }
+        
+        function addAnother() {
+            const form = document.getElementById('product-form');
+            const successMessage = document.getElementById('success-message');
+            
+            form.style.display = 'block';
+            successMessage.style.display = 'none';
+            form.reset();
+        }
+        
+        function hideError() {
+            document.getElementById('error-message').style.display = 'none';
+        }
+        
+        function hideMessages() {
+            document.getElementById('success-message').style.display = 'none';
+            document.getElementById('error-message').style.display = 'none';
+        }
+        
+        // Auto-generate SKU based on name and category
+        document.getElementById('product-name').addEventListener('input', generateSKU);
+        document.getElementById('product-category').addEventListener('change', generateSKU);
+        
+        function generateSKU() {
+            const name = document.getElementById('product-name').value;
+            const category = document.getElementById('product-category').value;
+            const skuField = document.getElementById('product-sku');
+            
+            if (name && category && !skuField.value) {
+                const nameCode = name.substring(0, 3).toUpperCase();
+                const categoryCode = category.substring(0, 3).toUpperCase();
+                const randomNum = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+                skuField.value = `$${categoryCode}-$${nameCode}-$${randomNum}`;
+            }
+        }
+    </script>
+</body>
+</html>
