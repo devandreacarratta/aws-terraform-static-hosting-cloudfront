@@ -1,0 +1,3 @@
+# AWS Lambda Python Dependencies
+# Core AWS SDK
+boto3>=1.40.30
