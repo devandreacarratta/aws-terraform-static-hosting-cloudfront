@@ -36,11 +36,21 @@ terraform plan -var-file='variables/dev.tfvars'
 terraform apply -var-file='variables/dev.tfvars'
 ```
 
+Initialize and upgrade version, plan and apply:
+
+```bash
+terraform init -upgrade
+terraform plan -var-file='variables/dev.tfvars'
+terraform apply -var-file='variables/dev.tfvars'
+``` 
+
 Destroy infrastructure:
 
 ```bash
 terraform destroy -var-file='variables/dev.tfvars'
 ```
+
+
 
 ## Future Enhancements
 
