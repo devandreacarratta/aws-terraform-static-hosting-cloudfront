@@ -9,11 +9,6 @@ variable "project_name" {
   default  = "serverless-demo"
 }
 
-variable "project_environment" {
-  type     = string
-  nullable = false
-}
-
 # Random Length
 variable "random_pet_length" {
   type    = number

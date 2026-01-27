@@ -4,7 +4,7 @@ module "iam_role_policy" {
   roles = {
 
     reader = {
-      name = "${local.base_environment_project_name}-lambda-products-reader-role"
+      name = "${local.base_environment_project_name}-lambda-products-reader-role-${random_string.random.result}"
       assume_role_policy = jsonencode({
         Version = "2012-10-17",
         Statement = [{
@@ -15,7 +15,7 @@ module "iam_role_policy" {
       })
       policies = [
         {
-          name        = "${local.base_environment_project_name}-lambda-reader-policy"
+          name        = "${local.base_environment_project_name}-lambda-reader-policy-${random_string.random.result}"
           description = "Policy for reading from DynamoDB"
           policy = jsonencode({
             Version = "2012-10-17",
@@ -30,7 +30,7 @@ module "iam_role_policy" {
     }
 
     writer = {
-      name = "${local.base_environment_project_name}-lambda-products-writer-role"
+      name = "${local.base_environment_project_name}-lambda-products-writer-role-${random_string.random.result}"
       assume_role_policy = jsonencode({
         Version = "2012-10-17",
         Statement = [{
@@ -41,7 +41,7 @@ module "iam_role_policy" {
       })
       policies = [
         {
-          name        = "${local.base_environment_project_name}-lambda-writer-policy"
+          name        = "${local.base_environment_project_name}-lambda-writer-policy-${random_string.random.result}"
           description = "Policy for writing to DynamoDB"
           policy = jsonencode({
             Version = "2012-10-17",

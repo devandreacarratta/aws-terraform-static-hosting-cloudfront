@@ -5,8 +5,8 @@ locals {
     DYNAMODB_TABLE = local.dynamodb_table_name
   }
 
-  lambda_function_name_get  = "${local.base_environment_project_name}-get-products"
-  lambda_function_name_post = "${local.base_environment_project_name}-post-products"
+  lambda_function_name_get  = "${local.base_environment_project_name}-get-products-${random_string.random.result}"
+  lambda_function_name_post = "${local.base_environment_project_name}-post-products-${random_string.random.result}"
 
 }
 

@@ -1,11 +1,13 @@
 resource "aws_cloudfront_origin_access_control" "cloudfront_origin_access_control" {
-  name                              = "${module.s3_hosting.s3_bucket_id}-oac"
+  name                              = "${module.s3_hosting.s3_bucket_id}-oac-${random_string.random.result}"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"
 }
 
 resource "aws_cloudfront_distribution" "cloudfront_distribution" {
+
+  comment = "CloudFront Distribution for ${terraform.workspace} S3 Bucket Hosting"
 
   depends_on = [
     aws_cloudfront_origin_access_control.cloudfront_origin_access_control,
@@ -39,6 +41,86 @@ resource "aws_cloudfront_distribution" "cloudfront_distribution" {
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
+  }
+
+  ordered_cache_behavior {
+    path_pattern     = "*.css"
+    allowed_methods  = ["GET", "HEAD"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "S3-${local.bucket_name}"
+
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+
+    viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 86400
+    max_ttl                = 604800
+    compress               = true
+  }
+
+  ordered_cache_behavior {
+    path_pattern     = "*.ico"
+    allowed_methods  = ["GET", "HEAD"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "S3-${local.bucket_name}"
+
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+
+    viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 86400
+    max_ttl                = 604800
+    compress               = true
+  }
+
+  ordered_cache_behavior {
+    path_pattern     = "images/*"
+    allowed_methods  = ["GET", "HEAD"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "S3-${local.bucket_name}"
+
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+
+    viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 604800
+    max_ttl                = 2592000
+    compress               = true
+  }
+
+  ordered_cache_behavior {
+    path_pattern     = "api/*.json"
+    allowed_methods  = ["GET", "HEAD"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "S3-${local.bucket_name}"
+
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+
+    viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 300
+    max_ttl                = 3600
+    compress               = true
   }
 
   custom_error_response {
