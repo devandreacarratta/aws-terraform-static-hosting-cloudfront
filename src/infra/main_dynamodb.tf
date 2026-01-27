@@ -1,5 +1,5 @@
 locals {
-  dynamodb_table_name = "${local.base_environment_project_name}-products"
+  dynamodb_table_name = "${local.base_environment_project_name}-p-${random_string.random.result}"
 }
 
 module "dynamodb_table" {

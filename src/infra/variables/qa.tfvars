@@ -3,5 +3,4 @@
 # as they often contain sensitive information (e.g., passwords, API keys)
 # and environment-specific values that change over time.
 
-aws_region          = "eu-central-1"
-project_environment = "qa"
+aws_region = "eu-south-1"

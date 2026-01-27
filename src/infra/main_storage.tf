@@ -3,10 +3,11 @@ locals {
   folder_path = "../web-template"
 
   dynamic_template_params = {
-    lambda_url            = module.lambda_function_url_get_products.function_url_value
-    lambda_add_url        = module.lambda_function_url_post_products.function_url_value
-    json_url              = "https://${aws_cloudfront_distribution.cloudfront_distribution.domain_name}/api/products.json"
-    default_product_image = "https://${aws_cloudfront_distribution.cloudfront_distribution.domain_name}/images/placeholder.png"
+    terraform_workspace_id = terraform.workspace == "prod" ? "" : " [${terraform.workspace}]"
+    lambda_url             = module.lambda_function_url_get_products.function_url_value
+    lambda_add_url         = module.lambda_function_url_post_products.function_url_value
+    json_url               = "https://${aws_cloudfront_distribution.cloudfront_distribution.domain_name}/api/products.json"
+    default_product_image  = "https://${aws_cloudfront_distribution.cloudfront_distribution.domain_name}/images/placeholder.png"
   }
 }
 

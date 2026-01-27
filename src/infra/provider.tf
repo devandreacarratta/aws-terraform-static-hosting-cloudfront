@@ -14,14 +14,14 @@ provider "aws" {
 
 locals {
 
-  base_environment_project_name = "${var.project_name}-${var.project_environment}"
+  base_environment_project_name = "${var.project_name}-${terraform.workspace}"
 
   tags = {
     LastUpdated                = "${timestamp()}"
     Owner                      = "devandreacarratta.it"
     ManagedBy                  = "Terraform"
     Project                    = var.project_name
-    Environment                = var.project_environment
+    Environment                = terraform.workspace
     GitHubOrganization         = "devandreacarratta"
     GitHubRepository           = "aws-terraform-static-hosting-cloudfront"
     BaseEnvironmentProjectName = local.base_environment_project_name
